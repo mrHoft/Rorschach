@@ -9,6 +9,7 @@ $secondary-color: #373b69;
   --primary-color: $primary-color;
   --secondary-color: $secondary-color;
   --color-bg-panel: rgba(128, 128, 128, 0.3);
+  --color-bg-modal: #000;
 }
 
 @mixin flex-center {
@@ -61,12 +62,17 @@ main {
   flex-grow: 1;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  position: relative;
 }
 
 h1,
 h2,
 h3,
 h3 {
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
 
@@ -94,6 +100,7 @@ h3 {
 
   &.match {
     opacity: 0;
+    pointer-events: none;
   }
 
   &.glow {

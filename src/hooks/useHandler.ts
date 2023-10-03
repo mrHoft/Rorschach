@@ -10,6 +10,18 @@ export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
   const [moves, setMoves] = useState(0)
   const [total, setTotal] = useState(CARDS / 2)
 
+  function Reset() {
+    setActive(null)
+    setMoves(0)
+    setTotal(CARDS / 2)
+
+    const collection = refPanel.current?.children
+    if (collection) {
+      const arr = Array.from(collection)
+      for (const el of arr) el.classList.remove('flipped', 'match')
+    }
+  }
+
   function Handler(event: React.MouseEvent<HTMLDivElement, MouseEvent>, num: number) {
     event.preventDefault()
     const el = event.currentTarget as TCard
@@ -53,5 +65,5 @@ export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
     }, 1300)
   }
 
-  return { moves, total, Handler }
+  return { moves, total, Handler, Reset }
 }

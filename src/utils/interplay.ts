@@ -33,9 +33,9 @@ export default class Interplay {
     return path.split('.').reduce((obj: Indexed | null, key: string) => (obj && obj[key] ? (obj[key] as Indexed) : null), this.state) as unknown
   }
 
-  public run = (path: string) => {
+  public run = (path: string, ...props: unknown[]) => {
     const func = this.get(path)
-    if (typeof func === 'function') func()
+    if (typeof func === 'function') func(...props)
     else console.warn('Not a function: ', path)
   }
 

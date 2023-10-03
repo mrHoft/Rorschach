@@ -12,19 +12,20 @@ const interplay = new Interplay()
 const PlayField = () => {
   const refPanel = useRef<HTMLDivElement>(null)
   const [deck, setDeck] = useState<number[]>(getDeck())
-  const { moves, total, Handler } = useHandler(refPanel)
+  const [time, setTime] = useState(performance.now())
+  const { moves, total, Handler, Reset } = useHandler(refPanel)
 
   const newGame = () => {
     setDeck(getDeck())
-    const collection = refPanel.current?.children
-    if (collection) {
-      const arr = Array.from(collection)
-      for (const el of arr) el.classList.remove('flipped', 'match')
-    }
+    setTime(performance.now())
+    Reset()
   }
 
   useEffect(() => {
-    if (total === 0) console.log('Win!')
+    if (total === 0) {
+      const elapsed = ~~((performance.now() - time) / 1000)
+      interplay.run('modal.win', moves, elapsed)
+    }
     interplay.add('game.new', newGame)
   }, [total])
 

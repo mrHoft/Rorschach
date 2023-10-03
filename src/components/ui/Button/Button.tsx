@@ -13,14 +13,14 @@ type ButtonProps = {
   // How large should the button be?
   size?: 'small' | 'medium' | 'large'
   // Optional click handler
-  onClick?: () => {}
+  onClick?: () => void
 }
 
 const Button: FC<ButtonProps> = ({ ...props }) => {
   const { color, backgroundColor, primary, size, onClick, label } = props
   const mode = primary ? 'button-primary' : 'button-secondary'
   return (
-    <button type="button" className={['button', `button-${size}`, mode].join(' ')} style={{ color, backgroundColor }}>
+    <button type="button" className={['button', `button-${size}`, mode].join(' ')} style={{ color, backgroundColor }} onClick={onClick}>
       {label}
     </button>
   )
