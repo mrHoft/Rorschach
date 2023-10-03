@@ -17,8 +17,12 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "assets/*": ["./src/assets/*"],
+      "ui/*": ["./src/components/ui/*"],
+    }
   },
   "include": ["src"],
-  "exclude": ["node_modules", ".storybook"]
+  "exclude": ["node_modules", ".storybook"],
 }

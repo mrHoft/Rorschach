@@ -1,25 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from '../../ui/link/link'
+import ImgUrl from '../../../assets/r00.png'
 
 const Header: React.FC = () => {
   return (
     <WrapHeader>
+      <WrapTitle>
+        <Logo src={ImgUrl} />
+        <h2>Rorschach the game</h2>
+      </WrapTitle>
       <MainNav>
         <ul>
           <li>
-            <Link animation="underline" onClick={() => console.log('Главная')}>
-              Главная
+            <Link animation="underline" onClick={() => console.log('New game')}>
+              New game
             </Link>
           </li>
           <li>
-            <Link animation="underline" onClick={() => console.log('O компании')}>
-              O компании
+            <Link animation="underline" onClick={() => console.log('Records')}>
+              Records
             </Link>
           </li>
           <li>
-            <Link animation="underline" onClick={() => console.log('Контакты')}>
-              Контакты
+            <Link animation="underline" onClick={() => console.log('About')}>
+              About
             </Link>
           </li>
         </ul>
@@ -29,22 +34,30 @@ const Header: React.FC = () => {
 }
 
 const WrapHeader = styled.header`
-  width: 100vw;
-  min-height: 4rem;
+  width: 100%;
+  min-height: 2rem;
   background-color: var(--color-bg-panel);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
-  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  padding: 0.25rem 1rem;
+`
+const WrapTitle = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+`
+const Logo = styled.img`
+  width: 3rem;
+  height: 3rem;
 `
 const MainNav = styled.nav`
   ul {
     display: flex;
     flex-direction: row;
     column-gap: 2rem;
+    list-style: none;
   }
 `
 

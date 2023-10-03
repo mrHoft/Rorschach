@@ -22,7 +22,7 @@ const WrapFooter = styled.footer`
   box-sizing: border-box;
   width: 100%;
   padding: 0.25rem 4rem;
-  background-color: black;
+  background-color: var(--color-bg-panel);
 `
 const WrapAuthor = styled.div`
   display: flex;

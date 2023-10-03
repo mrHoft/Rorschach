@@ -72,6 +72,7 @@ const fashion = {
  */
 const Link = styled.a<LinkProps>`
   text-decoration: none;
+  cursor: pointer;
   color: ${({ color }) => color || 'inherit'};
   font-weight: 500;
   font-size: ${({ size }) => size || 'inherit'};

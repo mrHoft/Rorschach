@@ -7,6 +7,7 @@
 | `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh \| bash` | Install nvm |
 | `nvm install v18.0.0` | Install node v18.0.0 |
 | `nvm alias default v18.0.0` | Set node v18.0.0 as default |
+| `pnpm install` | Install project dependencies |
 
 ### Usage
 | Command | Description |
