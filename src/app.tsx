@@ -1,6 +1,6 @@
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import MainPage from './components/MainPage'
+import MainPage from './components/templates/main/main'
 import Footer from './components/templates/footer/footer'
 import Header from './components/templates/header/header'
 

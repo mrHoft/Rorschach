@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from '../../ui/link/link'
-import ImgUrl from '../../../assets/r00.png'
+import ImgUrl from '../../../assets/tear.png'
+import Interplay from '../../../utils/interplay'
+
+const interplay = new Interplay()
 
 const Header: React.FC = () => {
   return (
@@ -13,7 +16,7 @@ const Header: React.FC = () => {
       <MainNav>
         <ul>
           <li>
-            <Link animation="underline" onClick={() => console.log('New game')}>
+            <Link animation="underline" onClick={() => interplay.run('game.new')}>
               New game
             </Link>
           </li>

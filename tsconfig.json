@@ -18,6 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "downlevelIteration": true,
     "paths": {
       "assets/*": ["./src/assets/*"],
       "ui/*": ["./src/components/ui/*"],

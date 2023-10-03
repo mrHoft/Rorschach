@@ -6,7 +6,7 @@
 type Indexed<T = unknown> = { [key in string | symbol]: T }
 
 const defaultSructure: Indexed = {
-  'favorites.show': () => {},
+  'game.new': () => {},
   'menu.show': () => {},
   'registration.show': () => {},
 }

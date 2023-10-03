@@ -8,7 +8,7 @@ $secondary-color: #373b69;
   --accent-color: $accent-color;
   --primary-color: $primary-color;
   --secondary-color: $secondary-color;
-  --color-bg-panel: rgba(128, 128, 128, 0.5);
+  --color-bg-panel: rgba(128, 128, 128, 0.3);
 }
 
 @mixin flex-center {
@@ -24,6 +24,7 @@ html {
   font-size: 20px;
   color: #eee;
   background-color: $color-bg1;
+  overflow: hidden;
 }
 
 body {
@@ -60,7 +61,6 @@ main {
   flex-grow: 1;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  overflow: hidden;
 }
 
 h1,
@@ -68,4 +68,62 @@ h2,
 h3,
 h3 {
   margin: 0;
+}
+
+// Cards
+.rorsch__card {
+  position: relative;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s linear;
+
+  &.flipped {
+    pointer-events: none;
+
+    .rorsch__back {
+      transform: rotateY(180deg);
+    }
+
+    .rorsch__face[data-mirror='1'] {
+      transform: scaleX(-1);
+    }
+    .rorsch__face[data-mirror='-1'] {
+      transform: scaleX(1);
+    }
+  }
+
+  &.match {
+    opacity: 0;
+  }
+
+  &.glow {
+    box-shadow: 0 0 0.5rem white;
+  }
+
+  .rorsch__back,
+  .rorsch__face {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #ddd;
+    background-size: cover;
+    border-radius: 0.5rem;
+    backface-visibility: hidden;
+    transition: transform 0.3s;
+  }
+
+  .rorsch__back {
+    z-index: 1;
+    // background-image: url(./assets/r00.png);
+    background-position: center;
+  }
+
+  .rorsch__face[data-mirror='1'] {
+    transform: scaleX(1);
+  }
+  .rorsch__face[data-mirror='-1'] {
+    transform: scaleX(-1);
+  }
 }
