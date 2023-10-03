@@ -1,6 +1,6 @@
 import { EventBus } from './eventBus.js'
 
-// JSON.parse(localStorage.getItem('BPLStore'))
+// JSON.parse(localStorage.getItem('RorchStore'))
 
 export default class Store extends EventBus {
   static EVENT_UPDATE = 'Update'
