@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import Button from '../../ui/Button/Button'
+import Button from '../../ui/button/button'
 import Interplay from '../../../utils/interplay'
 import { ALLOTED_TIME } from '../../../const/game'
+import { TRecord, saveRecord } from '../../../utils/leaderBoard'
 
 const interplay = new Interplay()
 
@@ -12,14 +13,19 @@ export default function ModalWin() {
   const [time, setTime] = useState(0)
 
   function showModal(moves: number, time: number) {
-    console.log('Win!')
+    setMoves(moves)
+    setTime(time)
+
     if (modalRef.current) {
-      setMoves(moves)
-      setTime(time)
       modalRef.current.style.display = 'flex'
-    } else {
-      console.warn('no ref')
     }
+
+    const record: TRecord = {
+      score: getScore(time),
+      movesMade: moves,
+      timeUsed: time,
+    }
+    saveRecord(record)
   }
 
   function newGame() {
@@ -35,8 +41,8 @@ export default function ModalWin() {
     return `${h}:${('0' + m).slice(-2)}.${('0' + (time % 60)).slice(-2)}`
   }
 
-  function getScore() {
-    return (ALLOTED_TIME - time) * 50
+  function getScore(elapsed: number = time) {
+    return (ALLOTED_TIME - elapsed) * 50
   }
 
   useEffect(() => {

@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link animation="underline" onClick={() => console.log('Records')}>
+            <Link animation="underline" onClick={() => interplay.run('modal.records')}>
               Records
             </Link>
           </li>

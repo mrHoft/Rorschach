@@ -4,7 +4,7 @@ import urlBg from '../../assets/bg02.png'
 import inks from '../../const/inks'
 import { ROWS, COLS } from '../../const/game'
 import useHandler from '../../hooks/useHandler'
-import { getDeck } from '../../utils/game'
+import { getDeck } from '../../utils/deck'
 import Interplay from '../../utils/interplay'
 
 const interplay = new Interplay()
