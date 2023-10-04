@@ -19,7 +19,7 @@ const Header: React.FC = () => {
       <MainNav>
         <ul>
           <li>
-            <Link animation="underline" onClick={() => interplay.run('game.new')}>
+            <Link animation="underline" onClick={() => interplay.run('modal.new')}>
               New game
             </Link>
           </li>
@@ -45,7 +45,9 @@ const Header: React.FC = () => {
 }
 
 const WrapSettings = styled.div`
+  width: 30%;
   display: flex;
+  justify-content: flex-end;
   column-gap: 0.5rem;
 `
 
@@ -60,7 +62,9 @@ const WrapHeader = styled.header`
   padding: 0.25rem 1rem;
 `
 const WrapTitle = styled.div`
+  width: 30%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   column-gap: 1rem;
 `
@@ -70,6 +74,8 @@ const Logo = styled.img`
 `
 const MainNav = styled.nav`
   ul {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: row;
     column-gap: 2rem;

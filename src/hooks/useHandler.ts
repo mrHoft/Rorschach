@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CARDS } from '../const/game'
+import { getGameOptions } from '../engine/difficulty'
 import { useAudio } from './useAudio'
 import Interplay from '../utils/interplay'
 
@@ -9,7 +9,7 @@ type TCard = {
   num?: number
 } & HTMLDivElement
 
-export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
+export default function useHandler(refPanel: React.RefObject<HTMLDivElement>, CARDS: number) {
   const [active, setActive] = useState<TCard | null>(null)
   const [moves, setMoves] = useState(0)
   const [total, setTotal] = useState(CARDS / 2)
@@ -21,10 +21,10 @@ export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
 
   interplay.add('audio.switch', setAudio)
 
-  function Reset() {
+  function Reset(cards: number = CARDS) {
     setActive(null)
     setMoves(0)
-    setTotal(CARDS / 2)
+    setTotal(cards / 2)
 
     const collection = refPanel.current?.children
     if (collection) {

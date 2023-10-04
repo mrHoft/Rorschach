@@ -1,6 +1,7 @@
-import { CARDS } from '../const/game'
+import { getGameOptions } from './difficulty'
 
 export function getDeck(): number[] {
+  const { CARDS } = getGameOptions()
   const deck: number[] = new Array(CARDS).fill(0)
 
   const getFree = (array: number[]) => {

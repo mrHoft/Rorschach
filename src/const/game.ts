@@ -1,13 +1,15 @@
-type TDifficulty = 'low' | 'medium' | 'hard'
+export type TDifficulty = 'low' | 'medium' | 'hard'
 
-const difficulty: TDifficulty = 'low'
-
-const options = {
-  low: { cards: 10, rows: 2, allotted: 5 * 60 },
-  medium: { cards: 18, rows: 3, allotted: 10 * 60 },
+export type TDParams = {
+  cards: number // Total cards in deck
+  rows: number // Number of rows in the field
+  allotted: number // Time in seconds alloted to pass a test
 }
 
-export const CARDS = options[difficulty].cards
-export const ROWS = options[difficulty].rows
-export const COLS = CARDS / ROWS
-export const ALLOTED_TIME = options[difficulty].allotted
+export type TDOptions = Record<TDifficulty, TDParams>
+
+export const difficultyOptions: TDOptions = {
+  low: { cards: 10, rows: 2, allotted: 5 * 60 },
+  medium: { cards: 18, rows: 3, allotted: 10 * 60 },
+  hard: { cards: 24, rows: 3, allotted: 15 * 60 },
+}

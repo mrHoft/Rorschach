@@ -1,24 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import urlBg from '../../assets/bg02.png'
-import inks from '../../const/inks'
-import { ROWS, COLS } from '../../const/game'
-import useHandler from '../../hooks/useHandler'
-import { getDeck } from '../../utils/deck'
-import Interplay from '../../utils/interplay'
+import urlBg from '../assets/bg02.png'
+import inks from '../const/inks'
+import useHandler from '../hooks/useHandler'
+import { getDeck } from './deck'
+import Interplay from '../utils/interplay'
+import { getGameOptions } from './difficulty'
 
 const interplay = new Interplay()
 
 const PlayField = () => {
+  const { CARDS, ROWS, COLS } = getGameOptions()
   const refPanel = useRef<HTMLDivElement>(null)
   const [deck, setDeck] = useState<number[]>(getDeck())
   const [time, setTime] = useState(performance.now())
-  const { moves, total, Handler, Reset } = useHandler(refPanel)
+  const { moves, total, Handler, Reset } = useHandler(refPanel, CARDS)
 
   const newGame = () => {
     setDeck(getDeck())
     setTime(performance.now())
-    Reset()
+    const { CARDS } = getGameOptions()
+    Reset(CARDS)
   }
 
   useEffect(() => {
@@ -30,10 +32,10 @@ const PlayField = () => {
   }, [total])
 
   return (
-    <GamePanel ref={refPanel}>
+    <GamePanel ref={refPanel} COLS={COLS} ROWS={ROWS}>
       {deck.map((num, i) => (
         <div className="rorsch__card" key={i} onClick={event => Handler(event, num)}>
-          <CardFace num={num} className="rorsch__back" />
+          <div className="rorsch__back"></div>
           <CardFace num={num} className="rorsch__face" data-mirror={num > 0 ? 1 : -1} />
         </div>
       ))}
@@ -41,17 +43,17 @@ const PlayField = () => {
   )
 }
 
-const GamePanel = styled.div`
+const GamePanel = styled.div<{ COLS: number; ROWS: number }>`
   margin: 5rem;
   height: 100%;
-  aspect-ratio: ${COLS / ROWS / 2};
+  aspect-ratio: ${({ COLS, ROWS }) => COLS / ROWS / 2};
   background-image: url(${urlBg});
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 0 0 0.5rem gray;
   display: grid;
-  grid-template-columns: repeat(${COLS}, 1fr);
+  grid-template-columns: repeat(${({ COLS }) => COLS}, 1fr);
   grid-gap: 0.5rem;
   padding: 0.5rem;
   &.no-event {

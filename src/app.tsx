@@ -6,6 +6,8 @@ import Header from './components/templates/header/header'
 
 const container = document.getElementById('root') as HTMLElement
 
+console.log('(.)(.)') // Nothing will work without it!
+
 const initialChildren = (
   <StrictMode>
     <Header />

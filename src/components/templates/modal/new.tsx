@@ -1,19 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import Button from '../../ui/button/button'
 import Interplay from '../../../utils/interplay'
-import { TRecord, getRecords } from '../../../utils/leaderBoard'
-import { dateString } from '../../../utils/dateString'
+import { TDifficulty } from '../../../const/game'
+import { setDifficulty } from '../../../engine/difficulty'
 
 const interplay = new Interplay()
 
-export default function ModalRecords() {
+export default function ModalNewGame() {
   const modalRef = useRef<HTMLDivElement>(null)
-  const [records, setRecords] = useState<TRecord[]>([])
 
   function showModal() {
-    setRecords(getRecords())
-
     if (modalRef.current) {
       modalRef.current.style.display = 'flex'
     }
@@ -25,32 +22,28 @@ export default function ModalRecords() {
     }
   }
 
+  function handleChoose(dif: TDifficulty) {
+    setDifficulty(dif)
+    closeModal()
+    interplay.run('game.new')
+  }
+
   useEffect(() => {
-    interplay.add('modal.records', showModal)
+    interplay.add('modal.new', showModal)
   }, [])
 
   return (
     <WrapModal ref={modalRef}>
       <Modal>
-        <h3>Records</h3>
-        {records.map((rec, i) => {
-          return (
-            <Record key={i}>
-              <span>{dateString(rec.timestamp!)}</span>
-              <span> {rec.difficulty ?? 'unknown'}</span>
-              <span> {rec.score}</span>
-            </Record>
-          )
-        })}
-        <Button color="#e0e0e0" backgroundColor="#808080" label="Close" onClick={closeModal} />
+        <h3>Start a new game</h3>
+        <p>Select difficulty level:</p>
+        <Button color="#e0e0e0" backgroundColor="#808080" label="Low" onClick={() => handleChoose('low')} />
+        <Button color="#e0e0e0" backgroundColor="#808080" label="Medium" onClick={() => handleChoose('medium')} />
+        <Button color="#e0e0e0" backgroundColor="#808080" label="Hard" onClick={() => handleChoose('hard')} />
       </Modal>
     </WrapModal>
   )
 }
-
-const Record = styled.div`
-  justify-self: left;
-`
 
 const WrapModal = styled.div`
   position: absolute;
@@ -66,13 +59,12 @@ const WrapModal = styled.div`
 `
 const Modal = styled.div`
   width: 50dvw;
-  min-height: 25dvw;
-  padding: 1rem 0;
+  padding: 1rem;
   border-radius: 1rem;
   background-color: var(--color-bg-modal);
   display: flex;
   flex-direction: column;
+  row-gap: 1rem;
   justify-content: center;
   align-items: center;
-  row-gap: 1rem;
 `

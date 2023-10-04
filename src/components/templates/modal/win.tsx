@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import Button from '../../ui/button/button'
 import Interplay from '../../../utils/interplay'
-import { ALLOTED_TIME } from '../../../const/game'
+import { getGameOptions } from '../../../engine/difficulty'
 import { TRecord, saveRecord } from '../../../utils/leaderBoard'
 
 const interplay = new Interplay()
@@ -20,7 +20,10 @@ export default function ModalWin() {
       modalRef.current.style.display = 'flex'
     }
 
+    const { DIFFICULTY } = getGameOptions()
+
     const record: TRecord = {
+      difficulty: DIFFICULTY,
       score: getScore(time),
       movesMade: moves,
       timeUsed: time,
@@ -42,7 +45,8 @@ export default function ModalWin() {
   }
 
   function getScore(elapsed: number = time) {
-    return (ALLOTED_TIME - elapsed) * 50
+    const { ALLOTED_TIME } = getGameOptions()
+    return Math.max((ALLOTED_TIME - elapsed) * 50, 0) + 500
   }
 
   useEffect(() => {

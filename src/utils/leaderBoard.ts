@@ -1,11 +1,13 @@
 import Queue from './Queue'
 import Store from './Store'
+import { TDifficulty } from '../const/game'
 
 const queue = new Queue()
 const store = new Store()
 
 export type TRecord = {
   timestamp?: Date
+  difficulty: TDifficulty
   score: number
   movesMade: number
   timeUsed: number

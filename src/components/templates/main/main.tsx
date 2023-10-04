@@ -1,8 +1,9 @@
 import React from 'react'
-import PlayField from '../../game/field'
+import PlayField from '../../../engine/field'
 import ModalWin from '../modal/win'
 import ModalRecords from '../modal/records'
 import ModalAbout from '../modal/about'
+import ModalNewGame from '../modal/new'
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
       <ModalWin />
       <ModalRecords />
       <ModalAbout />
+      <ModalNewGame />
     </main>
   )
 }

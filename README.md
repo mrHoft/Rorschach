@@ -16,6 +16,13 @@
 | `build` | Build project to `dist` |
 | `lint` | Linter |
 
+### Features:
+- Store class based on localStorage
+- Interplay class (context provider)
+- Queue class that provides ability to manage closed list of objects
+- useAudio hook
+- AI generated ambient music
+
 ## Требования
 1. Вёрстка +10
    - реализован интерфейс игры +5
