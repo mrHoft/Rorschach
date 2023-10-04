@@ -31,7 +31,8 @@ class LeaderBoard {
   }
 
   public get() {
-    return store.get('records') as TRecord[]
+    const savedRecords = store.get('records')
+    return (savedRecords.hasOwnProperty('length') ? savedRecords : []) as TRecord[]
   }
 }
 
