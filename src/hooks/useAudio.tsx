@@ -7,8 +7,7 @@ const store = new Store()
 type TAudio = 'sound' | 'music'
 
 // Can play music and sounds using playAudio(name)
-// name must have 'music/sound.audio_name' format
-// and have corresponding Audio objects in ResourceLoader
+// name must have '[music/sound].audio_name' format
 // Optional parameter audioStatusCallback
 // uses to send back information about audioEnabled state
 export const useAudio = (audioStatusCallback?: (enabled: boolean) => void) => {
@@ -32,7 +31,7 @@ export const useAudio = (audioStatusCallback?: (enabled: boolean) => void) => {
       list[name] = audio
       setAudioList(list)
     } else {
-      console.warn('Wrong audio name:', name)
+      console.warn('Wrong audio:', name)
     }
   }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from '../../ui/link/link'
 import SettingsAudio from '../../ui/settings/audio'
+import SettingsMusic from '../../ui/settings/music'
 import ImgUrl from '../../../assets/tear.png'
 import Interplay from '../../../utils/interplay'
 
@@ -14,6 +15,7 @@ const Header: React.FC = () => {
         <Logo src={ImgUrl} />
         <h2>Rorschach</h2>
       </WrapTitle>
+
       <MainNav>
         <ul>
           <li>
@@ -33,12 +35,19 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </MainNav>
-      <div>
+
+      <WrapSettings>
         <SettingsAudio />
-      </div>
+        <SettingsMusic />
+      </WrapSettings>
     </WrapHeader>
   )
 }
+
+const WrapSettings = styled.div`
+  display: flex;
+  column-gap: 0.5rem;
+`
 
 const WrapHeader = styled.header`
   width: 100%;
