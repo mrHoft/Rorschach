@@ -46,7 +46,7 @@ export default class Store extends EventBus {
  */
 function setValue(object, path, value) {
   if (object !== Object(object)) return object
-  if (typeof path != 'string' || path == '') throw new Error('Path must be string')
+  if (typeof path !== 'string' || path === '') throw new Error('Path must be string')
   let obj = object
   const arr = path.split('.')
   const last = arr.pop()
@@ -64,6 +64,9 @@ function setValue(object, path, value) {
  * @returns Value of object with given property
  */
 function getValue(object, path) {
-  if (object !== Object(object) || typeof path != 'string' || path == '') return object
-  return path.split('.').reduce((obj, key) => obj[key] || obj, object)
+  if (object !== Object(object) || typeof path !== 'string' || path === '') {
+    console.warn('App store. Wrong:', path)
+    return object
+  }
+  return path.split('.').reduce((obj, key) => (obj[key] !== undefined ? obj[key] : obj), object)
 }

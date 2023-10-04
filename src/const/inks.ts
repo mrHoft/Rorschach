@@ -9,7 +9,8 @@ import urlR08 from '../../src/assets/r08.png'
 import urlR09 from '../../src/assets/r09.png'
 import urlR10 from '../../src/assets/r10.png'
 import urlR11 from '../../src/assets/r11.png'
+import urlR12 from '../../src/assets/r12.png'
 
-const inks = [urlR01, urlR02, urlR03, urlR04, urlR05, urlR06, urlR07, urlR08, urlR09, urlR10, urlR11]
+const inks = [urlR01, urlR02, urlR03, urlR04, urlR05, urlR06, urlR07, urlR08, urlR09, urlR10, urlR11, urlR12]
 
 export default inks

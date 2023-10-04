@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import { CARDS } from '../const/game'
+import { useAudio } from './useAudio'
+import Interplay from '../utils/interplay'
+
+const interplay = new Interplay()
 
 type TCard = {
   num?: number
@@ -9,6 +13,13 @@ export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
   const [active, setActive] = useState<TCard | null>(null)
   const [moves, setMoves] = useState(0)
   const [total, setTotal] = useState(CARDS / 2)
+  const { playAudio, switchAudio } = useAudio()
+
+  function setAudio(state: boolean) {
+    switchAudio(state)
+  }
+
+  interplay.add('audio.switch', setAudio)
 
   function Reset() {
     setActive(null)
@@ -31,21 +42,23 @@ export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
     setMoves(moves + 1)
 
     if (!active) {
+      playAudio('sound.slide2')
       setActive(el)
       return
     }
 
     refPanel.current!.classList.add('no-event')
+    playAudio('sound.slide3')
 
     if ((active.num ?? 0) + num === 0) {
-      setTotal(total - 1)
-
       setTimeout(() => {
         el.classList.add('glow')
         active.classList.add('glow')
       }, 300)
 
       setTimeout(() => {
+        setTotal(total - 1)
+        playAudio('sound.match')
         el.classList.remove('glow')
         active.classList.remove('glow')
 
@@ -55,9 +68,11 @@ export default function useHandler(refPanel: React.RefObject<HTMLDivElement>) {
         setActive(null)
         refPanel.current!.classList.remove('no-event')
       }, 800)
+      return
     }
 
     setTimeout(() => {
+      playAudio('sound.slide8')
       active.classList.remove('flipped')
       el.classList.remove('flipped')
       setActive(null)

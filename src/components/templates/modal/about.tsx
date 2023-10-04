@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import Button from '../../ui/button/button'
 import Interplay from '../../../utils/interplay'
@@ -28,7 +28,7 @@ export default function ModalAbout() {
     <WrapModal ref={modalRef}>
       <Modal>
         <h3>About game</h3>
-        <p>This game was based on Rorschach test: a projective psychological test in which subjects' perceptions of inkblots.</p>
+        <p>This game was based on Rorschach test: a projective psychological test in which subjects perceptions of inkblots.</p>
         <p>Test was created in 1921.</p>
         <p>
           Rorschach never intended the inkblots to be used as a general personality test, but developed them as a tool for the diagnosis of schizophrenia. It
@@ -39,10 +39,6 @@ export default function ModalAbout() {
     </WrapModal>
   )
 }
-
-const Record = styled.div`
-  justify-self: left;
-`
 
 const WrapModal = styled.div`
   position: absolute;
@@ -58,7 +54,6 @@ const WrapModal = styled.div`
 `
 const Modal = styled.div`
   width: 50dvw;
-  min-height: 25dvw;
   padding: 1rem;
   border-radius: 1rem;
   background-color: var(--color-bg-modal);

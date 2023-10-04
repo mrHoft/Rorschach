@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from '../../ui/link/link'
+import SettingsAudio from '../../ui/settings/audio'
 import ImgUrl from '../../../assets/tear.png'
 import Interplay from '../../../utils/interplay'
 
@@ -11,7 +12,7 @@ const Header: React.FC = () => {
     <WrapHeader>
       <WrapTitle>
         <Logo src={ImgUrl} />
-        <h2>Rorschach the game</h2>
+        <h2>Rorschach</h2>
       </WrapTitle>
       <MainNav>
         <ul>
@@ -32,6 +33,9 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </MainNav>
+      <div>
+        <SettingsAudio />
+      </div>
     </WrapHeader>
   )
 }
