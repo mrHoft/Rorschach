@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { getGameOptions } from '../engine/difficulty'
 import { useAudio } from './useAudio'
 import Interplay from '../utils/interplay'
 
