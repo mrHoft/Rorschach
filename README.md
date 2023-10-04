@@ -1,5 +1,7 @@
 # Rorschach the game
 
+[Deploy](https://rorschach-game.vercel.app/)
+
 ### Installation
 | Command | Description |
 | --- | --- |
